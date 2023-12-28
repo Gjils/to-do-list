@@ -66,9 +66,10 @@ export default class TasksFilter extends Component {
 							index === activeIndex ? "active" : ""
 						}`}
 						key={index}
-						onClick={() => {
+						onClick={(event) => {
 							this.setState({ activeIndex: index });
 							setFilterPattern(filterPattern);
+							event.target.blur();
 						}}
 					>
 						{content}

@@ -1,7 +1,7 @@
 @import ../../variables
 
 .task-wrapper
-  transition: .4s
+  // transition: .4s
   padding: 1px
   margin-bottom: 15px
   display: flex
@@ -26,16 +26,12 @@
       .line
         display: block
   &.important
-    background-color: $importantcolor
-    .task
-      &-content
-        // color: $importantcolor
-      .important-button
-        background-color: $importantcolor
-        *
-          color: $maincolor !important
-        &:hover
-          background-color: $deletecolor !important
+    .important-button
+      background-color: $importantcolor
+      *
+        color: $maincolor !important
+      &:hover
+        background-color: $deletecolor !important
   .drag-area
     cursor: grab
     padding: 0 15px
@@ -67,10 +63,13 @@
       height: 2px
       background-color: $completedsubcolor
     &-content
+      overflow: hidden
+      resize: none
+      padding: 13px 0 
       cursor: pointer
       height: 50px
       width: 70%
-      border-radius: 15px
+      // border-radius: 15px
       background-color: transparent
       border: none
       position: relative
@@ -110,3 +109,28 @@
             background-color: $deletecolor
             *
               color: $maincolor
+
+@media screen and (max-width: 700px)
+  .task-wrapper
+    .drag-area
+      padding: 0 10px
+      *
+        font-size: 18px
+    .task
+      min-height: 60px
+      padding: 0 10px
+      &-content
+        padding: 15px 0
+        font-size: 12pt
+        bottom: 1px
+      .line
+        width: 43%
+      .button-list
+        width: 130px
+        button
+          height: 35px
+          width: 35px
+          transition: .4s
+          border-radius: 100%
+          *
+            font-size: 20px

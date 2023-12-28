@@ -4,12 +4,14 @@
   display: flex
   justify-content: space-between
   align-items: center
-  height: 70px
+  flex-wrap: wrap
+  min-height: 70px
   margin-bottom: 20px
-  padding: 0 20px
+  padding: 20px
   border-radius: 20px
   background-color: $wrappercolor
   .label
+    margin: 0px
     position: relative
     bottom: 2px
   .button-list
@@ -22,11 +24,6 @@
       height: 32px
       width: 32px
       border-radius: 100%
-      &:hover
-        background-color: $completedsubcolor
-        border: none
-        *
-          color: $maincolor
       &.add-button
         border: 2px solid
         *
@@ -34,5 +31,28 @@
       &.reset-button
         *
           font-size: 25px
-        &:hover
-          background-color: $deletecolor
+
+@media screen and (max-width: 700px)
+  .tasks-header .button-list 
+    width: 70px
+    button
+      width: 25px
+      height: 25px
+      &.add-button
+        border: 2px solid
+        *
+          font-size: 16px
+      &.reset-button
+        *
+          font-size: 22px
+
+@media screen and (min-width: 700px)
+  .tasks-header .button-list button
+    &:hover
+      background-color: $completedsubcolor
+      border: none
+      *
+        color: $maincolor
+        &.reset-button
+          &:hover
+            background-color: $deletecolor

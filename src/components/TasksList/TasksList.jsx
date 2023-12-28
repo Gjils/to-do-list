@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
 import TasksListItem from "../TasksListItem/TasksListItem";
 
@@ -11,17 +12,27 @@ export default function TasksList({
 	deleteTask,
 }) {
 	return (
-		<div className="tasks-list">
-			{tasks.map((task, index) => (
-				<Fragment key={task.id}>
-					<TasksListItem
-						task={task}
-						changeContent={changeContent}
-						toggleProp={toggleProp}
-						deleteTask={deleteTask}
-					></TasksListItem>
-				</Fragment>
-			))}
-		</div>
+		<Droppable droppableId="0">
+			{(provided) => (
+				<div
+					className="tasks-list"
+					ref={provided.innerRef}
+					{...provided.droppableProps}
+				>
+					{tasks.map((task, index) => (
+						<Fragment key={task.id}>
+							<TasksListItem
+								index={index}
+								task={task}
+								changeContent={changeContent}
+								toggleProp={toggleProp}
+								deleteTask={deleteTask}
+							></TasksListItem>
+						</Fragment>
+					))}
+					{provided.placeholder}
+				</div>
+			)}
+		</Droppable>
 	);
 }
